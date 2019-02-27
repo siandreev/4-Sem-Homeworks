@@ -1,15 +1,13 @@
 ﻿let x = System.Console.ReadLine() |> int 
 
-let fib n =
-    let rec fibonachi n acc1 acc2 = 
-        try
+let fibonachi n =
+    let rec fib n acc1 acc2 = 
             match n with
             | n when n < 0 -> failwith "Incorrect nomber"
             | 0 -> acc2
-            | _ -> fibonachi (n - 1) acc2 (acc1 + acc2)
-        with :? System.Exception as ex-> printfn "Exception %s" (ex.Message); -1
-    fibonachi n 0 1 
-printfn "%A"(fib x)
+            | _ -> fib (n - 1) acc2 (acc1 + acc2)
+    fib n 0 1 
+printfn "%A"(fibonachi x)
 
 
        

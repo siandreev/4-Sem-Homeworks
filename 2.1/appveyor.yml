@@ -1,7 +1,10 @@
 image: Visual Studio 2017
 
-build_script:
-    - cmd: dotnet build
+before_build:
+    - nuget restore 2.1/2.1.sln
+
+build:
+    project: 2.1/2.1.sln
 
 test_script:
-  - dotnet test
+    - dotnet test 2.1/2.1.sln

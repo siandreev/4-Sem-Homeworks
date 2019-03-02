@@ -1,0 +1,10 @@
+image: Visual Studio 2017
+
+before_build:
+    - nuget restore 2.2/2.2.sln
+
+build_script:
+    - dotnet build 2.2/2.2.sln
+
+test_script:
+    - dotnet test 2.2/2.2.sln

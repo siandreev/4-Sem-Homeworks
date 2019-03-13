@@ -1,0 +1,10 @@
+image: Visual Studio 2017
+
+before_build:
+    - nuget restore 3 List/3 Список/3 Список.sln
+
+build_script:
+    - dotnet build 3 List/3 Список/3 Список.sln
+
+test_script:
+    - dotnet test 3 List/3 Список/3 Список.sln

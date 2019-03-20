@@ -1,0 +1,67 @@
+
+
+\documentclass[12pt]{article} 
+
+\usepackage{cmap} 
+\usepackage[T2A]{fontenc} 
+\usepackage[utf8]{inputenc} 
+\usepackage[russian]{babel} 
+\usepackage{graphicx} 
+\usepackage{amsfonts} 
+\usepackage{amsthm,amsmath,amssymb} 
+\usepackage[russian,colorlinks=true,urlcolor=red,linkcolor=blue]{hyperref} 
+\usepackage{enumerate} 
+\usepackage{datetime} 
+\usepackage{fancyhdr} 
+\usepackage{lastpage} 
+\usepackage{color} 
+\usepackage{verbatim} 
+\usepackage{tikz} 
+\usepackage{pgfplots} 
+\usepackage{setspace} 
+\pgfplotsset{compat=newest,compat/show suggested version=false} 
+
+\parskip=0em 
+\parindent=0em 
+
+\voffset=-20mm 
+\textheight=235mm 
+\hoffset=-25mm 
+\textwidth=180mm 
+\headsep=12pt 
+\footskip=20pt 
+
+\setcounter{page}{0} 
+\pagestyle{empty} 
+
+\newcommand{\N}{\mathbb{N}} % Natural numbers 
+\newcommand{\R}{\mathbb{R}} % Ratio numbers 
+\newcommand{\Z}{\mathbb{Z}} % Integer numbers 
+\newcommand{\Q}{\mathbb{Q}} 
+\newcommand{\ord}{\textmd{ord}} 
+\newcommand{\im}{\textmd{Im}} 
+\def\SO{\Rightarrow} % => 
+\def\EQ{\Leftrightarrow} % <=> 
+\renewcommand{\le}{\leqslant} % <=, beauty 
+\renewcommand{\ge}{\geqslant} % >=, beauty 
+\renewcommand{\ker}{\textmd{Ker}} 
+\newcommand{\q}[1]{\langle #1 \rangle} % <x> 
+\newcommand{\B}[1]{\textbf{#1}} 
+\newcommand{\I}[1]{\textit{#1}}
+
+\begin{document} 
+\begin{center} 
+\textbf{Task 2. Andreev Sergey 241}\\ 
+\end{center} 
+Prove that S \ K \ K = I \\ 
+\\ 
+$S \ K \ K = (\lambda x \ y \ z.x \ z \ (y \ z)) \ (\lambda x \ y.x) \ (\lambda x \ y.x) \underset{\alpha}{\to} 
+(\lambda x \ t \ z.x \ z \ (t \ z)) \ (\lambda x \ y.x) \ (\lambda x \ y.x) \underset{\beta}{\to}\\ 
+    \underset{\beta}{\to}(\lambda t \ z.(\lambda x \ y.x) \ z \ (t \ z)) \ (\lambda x \ y.x)
+    \underset{\beta}{\to} \lambda z.(\lambda x \ y.x) \ z \ ((\lambda x \ y.x) \ z) 
+    \underset{\beta}{\to}\\
+    \underset{\beta}{\to} \lambda z.(\lambda y.z) \ ((\lambda x \ y.x) \ z)
+    \underset{\beta}{\to} \lambda z.(\lambda y.z) \ (\lambda y.z)
+    \underset{\beta}{\to} \lambda z.z = I \qed$ 
+
+\end{document}

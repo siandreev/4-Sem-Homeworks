@@ -1,10 +1,10 @@
 image: Visual Studio 2017
 
 before_build:
-    - nuget restore 2.3/2.3.sln
+    - nuget restore Task2/Task2.sln
 
 build_script:
-    - dotnet build 2.3/2.3.sln
+    - dotnet build Task2/Task2.sln
 
 test_script:
-    - dotnet test 2.3/2.3.sln
+    - dotnet test Task2/Task2.sln

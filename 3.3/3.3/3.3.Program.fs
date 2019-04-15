@@ -1,4 +1,4 @@
-﻿module logic
+﻿module Logic
     // делаем размеченное объединение дерева разбора арифметического выражения: в нем могут быть числа, и операции +, -, *, /
     type Operation =
     | Number of int
@@ -6,6 +6,7 @@
     | Subtraction of Operation * Operation
     | Multiplications of Operation * Operation
     | Division of Operation * Operation
+
     // функция eval последовательно раскрывает арифметическое выражение
     let rec eval (o : Operation) = 
         match o with

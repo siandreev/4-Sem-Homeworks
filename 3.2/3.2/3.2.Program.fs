@@ -1,5 +1,5 @@
-﻿module logic 
-    // создаем размеченное объединение- дерево
+﻿module Logic 
+    // создаем размеченное объединение- двоичное дерево
     type Tree<'a> =
         | Tree of 'a * Tree<'a> * Tree<'a>
         | Tip of 'a

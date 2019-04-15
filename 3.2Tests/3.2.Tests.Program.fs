@@ -1,7 +1,7 @@
-﻿module tests
+﻿module Tests
     open FsUnit
     open NUnit.Framework
-    open logic
+    open Logic
 
     [<Test>]
     let ``double every element of the tree`` () =

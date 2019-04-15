@@ -1,4 +1,4 @@
-﻿module logic
+﻿module Logic
      let func x l = List.map (fun y -> y * x) l
 
      let func'1 x : (int) list -> (int) list =

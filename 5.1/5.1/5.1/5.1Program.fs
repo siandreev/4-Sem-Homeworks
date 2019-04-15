@@ -1,9 +1,9 @@
-﻿module logic
-    
-       
+﻿module Logic
+      
     let checkString (str : string) =
         // создаем список возможных скобок
         let bracketsList  =  ["(" ; ")" ; "{" ; "}" ; "[" ; "]"]
+
         // создаем список из скобок в формате string в том порядке, в котором они идут в строке
         let onlyBracketList = (List.filter(fun x -> (List.contains x bracketsList)) (List.map string (Array.toList <| str.ToCharArray())))
 

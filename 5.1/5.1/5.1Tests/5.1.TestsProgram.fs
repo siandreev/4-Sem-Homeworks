@@ -1,6 +1,6 @@
-﻿module tests
+﻿module Tests
 
-    open logic  
+    open Logic  
     open FsUnit
     open NUnit.Framework
 

@@ -1,7 +1,7 @@
-﻿module tests
+﻿module Tsxests
     open FsUnit
     open NUnit.Framework
-    open logic
+    open Logic
 
     [<Test>]
     let ``Map count of even num in list [-10..10] should be equal 11`` () =

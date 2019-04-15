@@ -1,5 +1,5 @@
-﻿module logic
-    let rec sort list1 =
-        match list1 with
+﻿module Logic
+    let rec sortList list =
+        match list with
         | [ ] -> [ ] 
-        | x::xs -> sort(List.filter(fun n -> n < x) xs) @ [x] @ sort(List.filter (fun n -> n >= x) xs) 
+        | x::xs -> sortList(List.filter(fun n -> n < x) xs) @ [x] @ sortList(List.filter (fun n -> n >= x) xs) 

@@ -29,11 +29,11 @@
 
     [<Test>]
     let ``check that writing to the file works correctly``() =
-        (consoleReader testDictionary "WRITE Dictionary TO FILE") |> should equal (Map.ofList["recording completed successfully",""], testDictionary)
+        (consoleReader ((Map.add "Slava" "88005553535") testDictionary) "WRITE Dictionary TO FILE") |> should equal (Map.ofList["recording completed successfully",""], (Map.add "Slava" "88005553535") testDictionary)
 
     [<Test>]
     let ``check that reading from the file works correctly``() =
-        (consoleReader testDictionary "READ Dictionary FROM FILE") |> should equal (testDictionary, testDictionary)
+        (consoleReader testDictionary "READ Dictionary FROM FILE") |> should equal ((Map.add "Slava" "88005553535") testDictionary, (Map.add "Slava" "88005553535") testDictionary)
 
     [<Test>]
     let ``check what happens when the wrong command``() =

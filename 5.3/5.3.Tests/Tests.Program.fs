@@ -11,17 +11,6 @@
         "Fred", "89119974729";
         "Mary", "89119977777" ]
 
-    let readValue (inputStream : Stream)  =
-        let formatter = new BinaryFormatter()       
-        let res = formatter.Deserialize(inputStream)
-        unbox res 
-
-    let dictionaryFromFile = 
-       let fsIn = new FileStream("Data.dat",FileMode.Open)
-       let res : Map<string,string> = readValue fsIn
-       fsIn.Close()
-       res 
-
     [<Test>]
     let ``check that the output of the entire database works correctly``() =
         consoleReader testDictionary "SELECT * FROM Dictionary" |> should equal (testDictionary, testDictionary)
@@ -40,7 +29,7 @@
 
     [<Test>]
     let ``check that writing to the file works correctly``() =
-        (consoleReader testDictionary "WRITE Dictionary TO FILE") |> should equal (Map.ofList["recording completed successfully",""], dictionaryFromFile)
+        (consoleReader testDictionary "WRITE Dictionary TO FILE") |> should equal (Map.ofList["recording completed successfully",""], testDictionary)
 
     [<Test>]
     let ``check that reading from the file works correctly``() =

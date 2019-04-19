@@ -7,7 +7,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Include="Data.dat" />
+    <Content Include="Data.dat">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Compile Include="Tests.Program.fs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>

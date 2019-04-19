@@ -18,7 +18,7 @@
         formatter.Serialize(outputStream, box x)
 
     let dictionaryToFile dictionary =     
-         let fsOut = new FileStream(@"C:\5.3data\Data.dat", FileMode.Open)
+         let fsOut = new FileStream("Data.dat", FileMode.Open)
          writeValue fsOut dictionary
          fsOut.Close()
 
@@ -43,11 +43,11 @@
                 let res = formatter.Deserialize(inputStream)
                 unbox res 
             let dictionaryFromFile = 
-               let fsIn = new FileStream(@"C:\5.3data\Data.dat",FileMode.Open)
+               let fsIn = new FileStream("Data.dat",FileMode.Open)
                let res : Map<string,string> = readValue fsIn
                fsIn.Close()
                res 
-            if File.Exists(@"C:\5.3data\Data.dat") then (dictionaryFromFile, dictionaryFromFile) 
+            if File.Exists("Data.dat") then (dictionaryFromFile, dictionaryFromFile) 
             else Console.WriteLine("File not found") ; (dictionary, dictionary)    
         | _ when command = "EXIT" -> Environment.Exit(-1); (dictionary, dictionary)
         | _ -> (Map.ofList["Incorrect command",""], dictionary)

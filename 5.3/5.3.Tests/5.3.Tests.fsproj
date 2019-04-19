@@ -7,8 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Include="Tests.Program.fs" />
+    <Content Include="Data.dat" />
+    <Compile Include="Tests.Program.fs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
   </ItemGroup>
+
+  <ItemGroup />
 
   <ItemGroup>
     <PackageReference Include="FsUnit" Version="3.4.0" />

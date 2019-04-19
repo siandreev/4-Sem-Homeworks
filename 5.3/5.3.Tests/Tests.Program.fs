@@ -33,7 +33,7 @@
 
     [<Test>]
     let ``check that reading from the file works correctly``() =
-        (consoleReader testDictionary "READ Dictionary FROM FILE") |> should equal ((Map.add "Slava" "88005553535") testDictionary, (Map.add "Slava" "88005553535") testDictionary)
+        (consoleReader testDictionary "READ Dictionary FROM FILE") |> should equal (testDictionary, testDictionary)
 
     [<Test>]
     let ``check what happens when the wrong command``() =

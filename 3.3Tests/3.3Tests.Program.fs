@@ -9,7 +9,12 @@
 
     [<Test>]
     let ``Сalculate (7 + 5) * 2 / 3 - 2`` () =
-        eval (Subtraction(Division(Multiplications(Addition(Number 7, Number 5),Number 2), Number 3), Number 2)) |> should equal 6
+        eval (Subtraction(Division(Multiplications(Addition(Number 7, Number 5), Number 2), Number 3), Number 2)) 
+        |> should equal 6
+
+    [<Test>]
+    let ``Check divide by zero exception`` () =
+       (fun() ->  eval (Division(Number 3, Number 0)) |> ignore) |> should throw typeof<System.Exception>
 
     [<Test>]
     let ``Output 0`` () =

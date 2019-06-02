@@ -12,11 +12,13 @@
         match o with
         | Number n -> n
         | Addition(n1, n2) -> (eval n1) + (eval n2)
-        | Subtraction(n1,n2) -> (eval n1) - (eval n2)
+        | Subtraction(n1, n2) -> (eval n1) - (eval n2)
         | Multiplications(n1, n2) -> (eval n1) * (eval n2)
         | Division(n1, n2) -> 
-            try (eval n1) / (eval n2)
-            with :? System.Exception as ex-> printfn "Exception %s" (ex.Message); 0
+            if ((eval n2) <> 0) then
+                (eval n1) / (eval n2)
+            else failwith "Divided by zero exception"
+            
      
 
 

@@ -1,0 +1,57 @@
+\documentclass[12pt]{article} 
+
+\usepackage{cmap} 
+\usepackage[T2A]{fontenc} 
+\usepackage[utf8]{inputenc} 
+\usepackage[russian]{babel} 
+\usepackage{graphicx} 
+\usepackage{amsfonts} 
+\usepackage{amsthm,amsmath,amssymb} 
+\usepackage[russian,colorlinks=true,urlcolor=red,linkcolor=blue]{hyperref} 
+\usepackage{enumerate} 
+\usepackage{datetime} 
+\usepackage{fancyhdr} 
+\usepackage{lastpage} 
+\usepackage{color} 
+\usepackage{verbatim} 
+\usepackage{tikz} 
+\usepackage{pgfplots} 
+\usepackage{setspace} 
+\pgfplotsset{compat=newest,compat/show suggested version=false} 
+
+\parskip=0em 
+\parindent=0em 
+
+\voffset=-20mm 
+\textheight=235mm 
+\hoffset=-25mm 
+\textwidth=180mm 
+\headsep=12pt 
+\footskip=20pt 
+
+\setcounter{page}{0} 
+\pagestyle{empty} 
+
+\newcommand{\N}{\mathbb{N}} % Natural numbers 
+\newcommand{\R}{\mathbb{R}} % Ratio numbers 
+\newcommand{\Z}{\mathbb{Z}} % Integer numbers 
+\newcommand{\Q}{\mathbb{Q}} 
+\newcommand{\ord}{\textmd{ord}} 
+\newcommand{\im}{\textmd{Im}} 
+\def\SO{\Rightarrow} % => 
+\def\EQ{\Leftrightarrow} % <=> 
+\renewcommand{\le}{\leqslant} % <=, beauty 
+\renewcommand{\ge}{\geqslant} % >=, beauty 
+
+
+\begin{document} 
+\begin{center} 
+\textbf{Task 1. Andreev Sergey 241}\\ 
+\end{center} 
+Perform a beta-reduction of the $\lambda$-term according to the normal strategy:\\ 
+\\ 
+$((\lambda a.(\lambda b.b \ b)\ (\lambda b.b \ b))\ b)\ ((\lambda c.(c \ b)) \ (\lambda a.a)) \underset{\beta}{\to} 
+((\lambda b.b \ b)\ (\lambda b.b \ b)) \ ((\lambda c.(c \ b)) \ (\lambda a.a)) \underset{\beta}{\to}\\ 
+\underset{\beta}{\to}((\lambda b.b \ b)\ (\lambda b.b \ b)) \ ((\lambda a.a) \ b)
+\underset{\beta}{\to}(\lambda b.b \ b)\ (\lambda b.b \ b) \ b\qed$ 
+\end{document}

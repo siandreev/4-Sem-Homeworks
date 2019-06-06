@@ -22,8 +22,13 @@
 
     [<Test>]
     let ``check the second task in homework``() =
-        let S = Abstraction('x', Abstraction('y', Abstraction('z', Combination(Combination(Variable('x'), (Variable('z'))), 
-            Combination(Variable('y'), (Variable('z'))))))) 
+        let S = 
+            Abstraction(
+                'x', Abstraction(
+                    'y', Abstraction(
+                        'z', Combination(
+                            Combination(Variable('x'), (Variable('z'))), 
+                            Combination(Variable('y'), (Variable('z'))))))) 
         let K = Abstraction('x', Abstraction('y', Variable('x')))
         let SKK = Combination(Combination(S, K), K)
         let I = Abstraction('z',Variable('z'))

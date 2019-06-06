@@ -1,0 +1,37 @@
+%% Compile and read me!
+\documentclass[a4paper,12pt]{article}
+\pagestyle{empty}
+\usepackage{color}
+\usepackage{ifxetex}
+\ifxetex\usepackage{fontspec}\setmainfont[Ligatures=TeX]{CMU Serif}
+  \def\Hello{Welcome! Привет! Γειά σου! \fontspec{WenQuanYi Micro Hei} 你好!}
+\else\usepackage[utf8]{inputenc}\usepackage[T2A]{fontenc}
+  \def\Hello{Welcome! Привет!}
+\fi
+
+\begin{document}
+\setlength{\parindent}{0cm}{\Huge \Hello} 
+\bigskip
+\section*{What's this}
+Papeeria is an online \LaTeX\ environment. No installation and configuration needed.
+Access your \LaTeX\ papers from any modern browser, laptop, iPad or even smartphones.
+
+\bigskip
+You see now a playground project. You can edit the text and compile it with
+\textit{Compile} button above the text editor. Since it is a playground, text is
+not saved and you can't add new files.
+
+\section*{Sign-up}
+Got interested? Cool! Click that green \colorbox{green}{\bf\color{white}{Sign Up}}
+button to continue working with a \textbf{free} plan.
+
+\bigskip
+\begin{center}
+Happy typesetting!\\
+\medskip
+{Yours, Papeeria Team}
+\end{center}
+\end{document}
+
+
+

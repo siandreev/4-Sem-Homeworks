@@ -3,7 +3,9 @@
     open System.Net
     open System.Text.RegularExpressions
     
+    /// функция для скачивания html страницы и вывода информации о страницах, размещенных по ссылкам с нее
     let webFunction (url : string) =
+        /// скачивание кода страницы и вывод на экран
         let getInfoAsync (url : string)=
             async {
                     let req = WebRequest.Create(url) 
@@ -16,6 +18,8 @@
             }
         let sourceText = Async.RunSynchronously <| getInfoAsync url
         let regex = Regex("<a href\s*=\s*\"?https?://[^\"]*\"?\s*>")
+
+        /// список ссылок на исходной странице с обрезанным ненужным началом
         let dataList = 
             [for href in regex.Matches(sourceText) -> 
                 let index1 = href.Value.IndexOf("\"")

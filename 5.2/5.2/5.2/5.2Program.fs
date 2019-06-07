@@ -11,6 +11,3 @@
      let func'3 : int -> int list -> int list = 
          List.map << (*) 
          
-     printf "%A" <| func -1 [-1; 1]
-     printf "%A" <| func'3 -1 [-1; 1]
-     System.Console.ReadKey() |> ignore

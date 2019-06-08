@@ -11,13 +11,13 @@
             let! b = 3.5
             return a / b
         }
-        res |> should equal  0.048
+        res |> should (equalWithin 0.00001)  0.048
 
     [<Test>]
-    let ``check example from task with 15 signs``()=
-        let res = RoundingBuilder 15 {
+    let ``check example from task with 5 signs``()=
+        let res = RoundingBuilder 5 {
             let! a = 2.0 / 12.0
             let! b = 3.5
             return a / b
         }
-        res |> should equal  0.047619047619047998 
+        res |> should (equalWithin 0.0000001)  0.04762 

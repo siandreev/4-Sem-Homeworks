@@ -4,19 +4,25 @@
     open FsUnit
 
     // тестовые данные: матрица смежности и типы ос
-    let testDataMatrix = array2D [ [0;1;1;0;0;0]; [1;0;1;0;1;1]; [1;1;0;1;1;0]; [0;0;1;0;0;0]; [0;1;1;0;0;0]; [0;1;0;0;0;0] ]
-    let Windows probability = OperationSystem("Windows", probability)
-    let Linux probability = OperationSystem("Linux", probability)
-    let Ubuntu probability = OperationSystem("Ubuntu", probability)
+    let testDataMatrix = array2D [ 
+        [0; 1; 1; 0; 0; 0]; 
+        [1; 0; 1; 0; 1; 1];
+        [1; 1; 0; 1; 1; 0];
+        [0; 0; 1; 0; 0; 0];
+        [0; 1; 1; 0; 0; 0];
+        [0; 1; 0; 0; 0; 0] ]
+    let windows probability = OperationSystem("Windows", probability)
+    let linux probability = OperationSystem("Linux", probability)
+    let ubuntu probability = OperationSystem("Ubuntu", probability)
 
     // массив компьютеров с возможностью выставления вероятности заражения для каждой ос
     let  testDataComputers pWin pLin pUbu = [|
-        Computer(0, Windows pWin, true)
-        Computer(1, Linux pLin, false)
-        Computer(2, Windows pWin, false)
-        Computer(3, Ubuntu pUbu, false)
-        Computer(4, Ubuntu pUbu, false)
-        Computer(5, Linux pLin, false) |]
+        Computer(0, windows pWin, true)
+        Computer(1, linux pLin, false)
+        Computer(2, windows pWin, false)
+        Computer(3, ubuntu pUbu, false)
+        Computer(4, ubuntu pUbu, false)
+        Computer(5,linux pLin, false) |]
 
     // функция, возвращающая массив из bool- ов ,соответствующим зараженности компов через заданное число ходов
     let stateAfterCoupleMoves computersData countOfMoves = 

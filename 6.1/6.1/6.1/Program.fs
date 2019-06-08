@@ -30,7 +30,7 @@
     // класс, который отвечает за вывод информации на консоль
     type Drawer(matrix : int[,], computersArray : Computer[]) =
         // метод вывода состояния заражения: зараженных красим в красный, здоровых- в белый
-        member this.DarwStage =
+        member this.DrawStage =
             for i in 0..(computersArray.Length - 1) do
                 if computersArray.[i].IsInfected then 
                     Console.ForegroundColor <- ConsoleColor.Red
@@ -87,11 +87,12 @@
                             Infector(fst computersData.[id], computersArray.[i]).LetsTry
 
                     // добавляем всех еще не помеченных и связанных с рассматриваемым компов
-                    let newQueue = xs @ (List.filter(fun x -> x <> 0 && snd computersData.[x] = false) <| List.mapi(fun i x -> i*x)  (matrix.[id,*] |> Array.toList))     
+                    let newQueue = xs @ (List.filter(fun x -> x <> 0 && snd computersData.[x] = false)
+                        <| List.mapi(fun i x -> i * x)  (matrix.[id, *] |> Array.toList))     
                     recStep newQueue 
                 | [] -> None
             recStep [0] |> ignore 
-            Drawer(matrix, computersArray).DarwStage // рисуем состояние
+            Drawer(matrix, computersArray).DrawStage // рисуем состояние
             computersArray
 
     // весь код далее- тестовые данные для просмотра работы алгоритма вручную

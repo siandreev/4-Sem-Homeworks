@@ -19,27 +19,27 @@
         Computer(5, Linux pLin, false) |]
 
     // функция, возвращающая массив из bool- ов ,соответствующим зараженности компов через заданное число ходов
-    let stateAfterCoupleMoves computersData countOfMovies = 
+    let stateAfterCoupleMovies computersData countOfMovies = 
         let rec makeStep computersData acc =
             match acc with
-            | _ when acc = countOfMovies -> Array.map(fun (x : Computer) -> x.isInfected) computersData
-            | _ -> makeStep (MakeSteps(testDataMatrix, computersData).Step acc) (acc + 1)
+            | _ when acc = countOfMovies -> Array.map(fun (x : Computer) -> x.IsInfected) computersData
+            | _ -> makeStep (StepMaker(testDataMatrix, computersData).step acc) (acc + 1)
         makeStep computersData 0
     
     [<Test>]
     let ``check that with the probability of infection of 1 for all, the algorithm will behave like a detour in width``() =
-        stateAfterCoupleMoves (testDataComputers 1.0 1.0 1.0) 1 |> should equal [| true; true; true; false; false; false |]
-        stateAfterCoupleMoves (testDataComputers 1.0 1.0 1.0) 2 |> should equal [| true; true; true; true; true; true |]
+        stateAfterCoupleMovies (testDataComputers 1.0 1.0 1.0) 1 |> should equal [| true; true; true; false; false; false |]
+        stateAfterCoupleMovies (testDataComputers 1.0 1.0 1.0) 2 |> should equal [| true; true; true; true; true; true |]
 
     [<Test>]
     let ``check that, with a probability of infection of 1 for everyone except Linux, and 0 for Linux, the virus will behave correctly``() =
-        stateAfterCoupleMoves (testDataComputers 1.0 0.0 1.0) 1 |> should equal [| true; false; true; false; false; false |]
-        stateAfterCoupleMoves (testDataComputers 1.0 0.0 1.0) 2 |> should equal [| true; false; true; true; true; false |]
+        stateAfterCoupleMovies (testDataComputers 1.0 0.0 1.0) 1 |> should equal [| true; false; true; false; false; false |]
+        stateAfterCoupleMovies (testDataComputers 1.0 0.0 1.0) 2 |> should equal [| true; false; true; true; true; false |]
 
     [<Test>]
     let ``check that with the probability of infection at all, no one will be infected even through a large number of moves``() =
-        stateAfterCoupleMoves (testDataComputers 0.0 0.0 0.0) 239 |> should equal [| true; false; false; false; false; false |]
-        stateAfterCoupleMoves (testDataComputers 0.0 0.0 0.0) 2390 |> should equal [| true; false; false; false; false; false |]
+        stateAfterCoupleMovies (testDataComputers 0.0 0.0 0.0) 239 |> should equal [| true; false; false; false; false; false |]
+        stateAfterCoupleMovies (testDataComputers 0.0 0.0 0.0) 2390 |> should equal [| true; false; false; false; false; false |]
            
        
     

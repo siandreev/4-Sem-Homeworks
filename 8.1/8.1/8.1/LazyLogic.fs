@@ -2,7 +2,7 @@
 
     open System.Threading
   
-    /// итерфейс Lazy вычислений
+    /// интерфейс Lazy вычислений
     type ILazy<'a> =
         abstract member Get: unit -> 'a
 
@@ -11,9 +11,9 @@
         let mutable calcResult = None
 
         interface ILazy<'a> with
+            /// запускаем вычисление (только при первом вызове), выдаем результат вычисления
             member this.Get() =
                 match calcResult with 
-                /// считаем, только если до этого не считали
                 | Some value -> value
                 | None -> 
                     let createResult = supplier ()
@@ -22,36 +22,38 @@
 
     /// многопоточный простой режим
     type LazyAsync<'a> (supplier : unit -> 'a) =
+        let monitor = obj;
         let mutable calcResult = None
-        let lockobj = obj()
         interface ILazy<'a> with
+            /// запускаем вычисление (только при первом вызове), выдаем результат вычисления
             member this.Get() =
-                Monitor.Enter lockobj
-                try
-                    match calcResult with 
-                    /// считаем, только если до этого не считали
-                    | Some value -> value
-                    | None -> 
+                match calcResult with 
+                | Some value -> value
+                | None -> 
+                    lock monitor (fun () -> 
+                    match calcResult with
+                    | None ->
                         let createResult = supplier ()
                         calcResult <- Some createResult
-                        calcResult.Value
-                finally
-                    Monitor.Exit lockobj
+                        createResult
+                    | Some value -> value)
 
     /// lock-free режим
      type LazyLockFree<'a> (supplier : unit -> 'a) =
         let mutable calcResult = None
         let checkValue = calcResult
         interface ILazy<'a> with
+            /// запускаем вычисление и выдаем результат
             member this.Get() =
-                let rec repeat () =
                     match calcResult with                      
-                        | None -> 
-                            let createResult = supplier ()
-                            Interlocked.CompareExchange(&calcResult, Some createResult, checkValue) |> ignore
-                            repeat ()
-                         | Some value -> value
-                repeat () 
+                    | None -> 
+                        let createResult = supplier ()
+                        Interlocked.CompareExchange(&calcResult, Some createResult, checkValue) |> ignore
+                        match calcResult with
+                        | None -> createResult
+                        | Some value -> value
+                    | Some value -> value
+         
 
     
 

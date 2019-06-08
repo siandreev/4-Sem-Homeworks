@@ -2,6 +2,7 @@
 
 open LazyLogic
 
+    /// создание объекта одного из классов разного (по поточности) выполнения вычислений  
     type LazyFactory() =
         static member CreateSingleThreadedLazy (supplier : unit -> 'a) =
             new LazyLogic.LazyMono<'a>(supplier) :> ILazy<'a>

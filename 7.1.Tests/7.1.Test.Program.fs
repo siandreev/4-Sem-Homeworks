@@ -20,4 +20,4 @@
             let! b = 3.5
             return a / b
         }
-        res |> should equal  0.047619047619047998
+        res |> should equal  0.047619047619047998 

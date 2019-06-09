@@ -21,9 +21,10 @@
             Task.Run(fun () -> lazyCalc.Get ()) |> ignore
 
     [<Test>]
-    let ``check that all values match in second mode``() =
-        let lazyCalc = LazyFactory.CreateAsyncThreadedLazy(fun () -> 12 + 21 )              
-        Array.filter(fun x -> x = 33) (map(fun obj -> lazyCalc.Get()) [|1..10|]) |> Array.length |> should equal 10
+    let ``check that all values match in async mode``() =
+        let lazyCalc = LazyFactory.CreateAsyncThreadedLazy(fun () -> new obj())
+        let exp = lazyCalc.Get()
+        map(fun obj -> exp |> (lazyCalc.Get ()).Equals |> should be True) [|1..10|] |> ignore
 
     [<Test>]
     let ``lets check lock-free mode``() =
@@ -32,11 +33,8 @@
 
     [<Test>]
     let ``check that all values match in lock-free mode``() =
-        let lazyCalc = LazyFactory.CreateLockFreeThreadedLazy(fun () -> 12 + 21 )              
-        Array.filter(fun x -> x = 33) (map(fun obj -> lazyCalc.Get()) [|1..10|]) |> Array.length|> should equal 10
-
+        let lazyCalc = LazyFactory.CreateLockFreeThreadedLazy(fun () -> new obj())
+        let exp = lazyCalc.Get()
+        map(fun obj -> exp |> (lazyCalc.Get ()).Equals |> should be True) [|1..10|] |> ignore
 
     
-          
-
-
